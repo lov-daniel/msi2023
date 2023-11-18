@@ -29,7 +29,7 @@ Language Stack
 - Python [^1]
 - HTML
 - Javascript
-
+- CSS
 
 
 Footnotes
