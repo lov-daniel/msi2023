@@ -2,19 +2,19 @@
 <html>
 <head>
     <title>test</title>
-    <script src="./src/index.js"></script>
-    <link rel="stylesheet" href="./src/styles.css">
+    <script src="../static/index.js"></script>
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
 
 <body>
   <div class="container">
-    <div class="card">
-      <div id="back" class="cardBack" onclick="handleFlip(this)">Back</div>
-      <div id="front" class="cardFront" onclick="handleFlip(this)">Front</div>
+    <div class="card" onclick="handleFlip(this)">
+      <div id="back" class="cardBack">Back</div>
+      <div id="front" class="cardFront">Front</div>
     </div>
   </div>
 
-  <script src="./src/cards.js">
+  <script src="../static/cards.js">
   </script>
 </body>
 </html>

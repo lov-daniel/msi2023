@@ -17,14 +17,15 @@ function tableCreate() {
         var front = document.createElement("div");
         var back = document.createElement("div");
         card.className = "card";
+        card.onclick = function(){handleFlip(this)};
 
         front.id = "front";
         front.className = "cardFront";
         front.innerText = "hi";
-        front.onclick = function(){handleFlip(this)};
+        // front.onclick = function(){handleFlip(this)};
         back.id = "back";
         back.className = "cardBack";
-        back.onclick = function(){handleFlip(this)};
+        // back.onclick = function(){handleFlip(this)};
   
         td.append(card);
         card.append(front);

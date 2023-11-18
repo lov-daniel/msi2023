@@ -10,7 +10,7 @@ sys.path.insert(1, working_directory)
 
 import computerData as cd
 
-app = Flask(__name__) 
+app = Flask(__name__, '/static') 
 
 row_id = list(string.ascii_uppercase)
 pc_count = 10
