@@ -17,5 +17,8 @@ class computerStation:
     def setUser(self, currentUser):
         self.currentUser = currentUser
 
+    def getComputerData(self):
+        return self.computerData 
+
     def getDuration(self):
         return datetime.datetime.now() - self.startTime

@@ -36,4 +36,6 @@ def start_server():
     load_pcs()
     app.run(debug=True)
 
+start_server()
+
 
