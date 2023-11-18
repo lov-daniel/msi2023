@@ -1,12 +1,13 @@
-
 from flask import Flask 
-from flask import render_template
+from flask import render_template, request
 import os
 import sys
 import string
 
 working_directory = os.getcwd()
 sys.path.insert(1, working_directory)
+
+computers = []
 
 import computerData as cd
 
@@ -17,8 +18,11 @@ pc_count = 10
 row_length = 5
 
 #Directories
-@app.route("/") 
+@app.route("/", methods=["GET", "POST"]) 
 def homepage(): 
+
+    request.UI
+
     return render_template('UI.html')
 
 def load_pcs():

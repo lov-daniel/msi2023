@@ -12,7 +12,7 @@ function tableCreate() {
       //   break;
       // } else {
         const td = tr.insertCell();
-        td.appendChild(document.createTextNode(`Cell ${String.fromCharCode(i+65)}${j+1}`));
+        // td.appendChild(document.createTextNode(`Cell ${String.fromCharCode(i+65)}${j+1}`));
         var card = document.createElement("div");
         var front = document.createElement("div");
         var back = document.createElement("div");
@@ -21,7 +21,7 @@ function tableCreate() {
 
         front.id = "front";
         front.className = "cardFront";
-        front.innerText = "hi";
+        front.innerText = `PC: ${String.fromCharCode(i+65)}${j+1}`;
         // front.onclick = function(){handleFlip(this)};
         back.id = "back";
         back.className = "cardBack";
