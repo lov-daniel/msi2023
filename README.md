@@ -9,9 +9,9 @@ Solution
 After a user scans an
 
 Language Stack
-- Python
+- Python [^1]
 - HTML
-- Flask Framework
+- Javascript
 
 Contributors
 --
@@ -19,4 +19,6 @@ Contributors
 - Byron Chan
 - Daniel Lov
 
-
+Footnotes
+--
+[^1]: Flask Framework was used along with standard Python.
