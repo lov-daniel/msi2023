@@ -84,9 +84,10 @@ input[type=number] {
   transform: perspective(1000px) rotateY(-180deg);
 }
 
-.cardFront.inUse {
+.cardFront.inUse, .cardBack.inUse {
   border-style: solid;
   border-color: #cc0202;
+  border-width: 5px;
 }
 .cardFront.isAvailable, .cardBack.isAvailable {
   border-style: solid;

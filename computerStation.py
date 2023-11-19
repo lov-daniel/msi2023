@@ -22,3 +22,5 @@ class computerStation:
 
     def getDuration(self):
         return datetime.datetime.now() - self.startTime
+    
+    

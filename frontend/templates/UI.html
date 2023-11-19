@@ -7,23 +7,61 @@
     <script scr="../static/admin.js"> </script>   
     <script type="text/javascript">
       let dimensions = [];
+      var finalVal = [];
+      let usableComputerIDs = [];
 
-      function load_jsons() {
+      function flip_cards(finalVal) {
+        $.getJSON("{{url_for('send_jsontwo')}}", function (data) {
+          $.each(data, function(key, val) {
+            finalVal.push(val);
+          });
+        });
+      }
+
+      function load_jsons(finalVal) {
         $.getJSON("{{url_for('send_json')}}", function (data) {
           $.each(data, function(key, val) {
             dimensions.push(val);
           });
-          tableCreate(dimensions[0], dimensions[1])
+          tableCreate(dimensions[0], dimensions[1], finalVal);
         });
       }
+
+      function clear_buffer(finalVal) {
+        finalVal = [];
+      }
+
+      
     </script>
     
     <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../static/popup.css">
     <link rel="icon" type="image/x-icon" href="../static/logo.png">
 </head>
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
 
-<body onload="load_jsons()">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Login</h2>
+    </div>
+    <div class="modal-body">
+      <input type="text" id="fname" name="firstname" placeholder="ID number">
+      <input type="submit" value="Submit" onclick="hideModal();">
+    </div>
+    <!-- <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div> -->
+  </div>
+
+</div>
+
+<!-- End modal -->
+
+<body onload="flip_cards(finalVal), load_jsons(finalVal), clear_buffer(finalVal)">
   <script>
   </script>
    <a class="btn" href="{{url_for('login')}}">
@@ -31,5 +69,7 @@
   </a>
   <script src="../static/cards.js">
   </script>
+  <script src="../static/popup.js"></script>
 </body>
+
 </html>

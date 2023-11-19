@@ -1,10 +1,14 @@
 // Create tables
-function tableCreate(row, col) {
+var cardArray = [];
+var cardIDArray = [];
+function tableCreate(row, col, enabledCards=0) {
   const body = document.body,
         tbl = document.createElement('table');
 
+        console.log(enabledCards)
   tbl.style.width = '100px';
   tbl.style.margin = "auto";
+
 
 
   for (let i = 0; i < row; i++) {
@@ -28,11 +32,31 @@ function tableCreate(row, col) {
         // `
         back.id = "back";
         back.className = "cardBack";
-        back.innerHTML = `<button type="button" onclick='event.stopPropagation(); isPC(this);'>Toggle</button>`
+        back.innerHTML = `<button type="button" onclick='event.stopPropagation(); isPC(this);'>Add</button>`
   
+        
         td.append(card);
         card.append(front);
         card.append(back);
+
+        if (enabledCards) {
+          if (enabledCards[0].includes(card.getAttribute("pc_id")) === true) {
+            console.log("pc found!");
+            handleFlip(card);
+        }
+
+        // $.ajax({
+        //   type: "POST",
+        //   url: "/sendJSONdataDuration"
+        //   data: {
+        //     "duration": getDuration(this);
+        //   },
+        //   success: function(response) {
+        //     console.log("successfuly sent list");
+        //     console.log(getDuration(this);
+        //   }
+        // })
+
         // if (i === 1 && j === 1) {
         //   td.setAttribute('rowSpan', '2');
         // }
@@ -41,4 +65,4 @@ function tableCreate(row, col) {
   }
   body.appendChild(tbl);
 }
-
+}

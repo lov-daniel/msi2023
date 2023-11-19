@@ -3,7 +3,7 @@ from flask import render_template, request, redirect, url_for, jsonify
 import os
 import sys
 import string
-
+import json
 working_directory = os.getcwd()
 sys.path.insert(1, working_directory)
 
@@ -19,8 +19,6 @@ def receiveData(data):
     return data
 
 row_id = list(string.ascii_uppercase)
-pc_count = 10
-row_length = 5
 
 #Directories
 @app.route("/", methods=["GET", "POST"]) 
@@ -32,10 +30,19 @@ def send_json():
     jsonFile = jsonify({"length": dimensions[0], "width": dimensions[1]})
     return jsonFile
 
+@app.route("/sendJSONdatatwo", methods=["GET", "POST"])
+def send_jsontwo():
+    jsonFile = json.dumps({"computers" : computers})
+    return jsonFile
+
 @app.route("/getJSONdata", methods=["POST"])
 def receive_json():
-    data = request.args.get("PCs", "No computers found.")
-    print(data)
+    if request.form.get("removed"):
+        computers.remove(computers[int(request.form.get("removed"))])
+    if request.form.get("PCs"):
+        computers.append(request.form.get("PCs"))
+    print(computers)
+    return ""
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
@@ -56,22 +63,27 @@ def admin():
             dimensions[1] = request.form.get("width", 5)
     return render_template("admin.html")
 
+# @app.route("/sendJSONdataDuration", methods=["POST"])
+# def send_json():
+#     jsonFile = jsonify({"duration": computerStation.getDuration()})
+#     return jsonFile
+
 
 def load_pcs():
     pc_list = []
 
-    for row in range(row_length):
-        for pc in range(pc_count):
-            pc_list.append(cd.computerData(f"{row_id[row]}{pc}"))
+    for index in range(len(computers)):
+        pc_list.append(cd.computerData(computers[index]))
     
     return pc_list
 
 
 #Used Imported Functions
 def start_server():
-    load_pcs()
+    load_pcs() 
     app.run(debug=True)
 
-start_server()
+if __name__ == "__main__":
+    start_server()
 
 

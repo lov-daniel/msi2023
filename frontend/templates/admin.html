@@ -32,15 +32,13 @@
     <h1>Admin Panel</h1>
     <p1>
     <form action="" method="POST">
-    <div class="container">
-        <label for="length">Length:</label><br>
+    <label for="length">Length:</label><br>
     <input type="number" id="length" name="length" min="5" value="{{
         request.files.length}}"><br>
     <label for="width">Width:</label><br>
     <input type="number" id="width" name="width" min="5" value= "{{
         request.files.length}}"><br>
     <input class="btn btn-default" type="submit" value="Set Size">
-    </div>
     </form>
     </p1>
 </body>
