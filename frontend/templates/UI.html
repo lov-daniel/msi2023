@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>test</title>
-    <script src="../static/index.js"></script>
+    <title>TEC Queue</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../static/index.js"> </script>
+    <script type="text/javascript">
+      let dimensions = [];
+
+      function load_jsons() {
+        $.getJSON("{{url_for('send_json')}}", function (data) {
+          $.each(data, function(key, val) {
+            dimensions.push(val);
+          });
+
+          tableCreate(dimensions[0], dimensions[1])
+        });
+      }
+    </script>
+    
     <link rel="stylesheet" href="../static/styles.css">
+    <link rel="icon" type="image/x-icon" href="../static/logo.png">
 </head>
 
-<body>
-  <div class="container">
-    <div class="card" onclick="handleFlip(this)">
-      <div id="back" class="cardBack">Back</div>
-      <div id="front" class="cardFront">Front</div>
-    </div>
-  </div>
 
+<body onload="load_jsons()">
+  <script>
+  </script>
+  <a href="{{url_for('login')}}">login</a>
   <script src="../static/cards.js">
   </script>
 </body>

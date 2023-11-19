@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin panel</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="icon" type="image/x-icon" href="../static/logo.png">
+</head>
+
+<body>
+    <style>
+        h1 {text-align: center;}
+    </style>
+
+    <h1>Admin Panel</h1>
+    <p1>
+    <form action="" method="POST">
+    <label for="length">Length:</label><br>
+    <input type="number" id="length" name="length" min="5" value="{{
+        request.files.length}}"><br>
+    <label for="width">Width:</label><br>
+    <input type="number" id="width" name="width" min="5" value= "{{
+        request.files.length}}"><br>
+    <input class="btn btn-default" type="submit" value="Set Size">
+    </form>
+    </p1>
+</body>
+
+</html>

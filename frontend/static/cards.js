@@ -5,3 +5,13 @@ function handleFlip(element) {
 
   return element;
 }
+
+function inUse(element) {
+  element.classList.toggle('inUse');
+}
+
+function isPC(element) {
+  console.log(element.parentElement.parentElement);
+  element.parentElement.parentElement.children[0].classList.toggle('isPC');
+
+}

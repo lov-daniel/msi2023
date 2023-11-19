@@ -25,15 +25,14 @@ def main():
 
     computerList = ws.load_pcs()
     
-    user1 = input("Please enter your PID: \n")
-    user2 = input("Please enter your PID: \n")
-    computer1 = input("Which computer would you like to reserve?\n")
-    computer2 = input("Which computer would you like to reserve?\n")
+    # user1 = input("Please enter your PID: \n")
+    # user2 = input("Please enter your PID: \n")
+    # computer1 = input("Which computer would you like to reserve?\n")
+    # computer2 = input("Which computer would you like to reserve?\n")
 
-    reserveComputer(ud.userData(user1), cd.computerData(computer1))
-    reserveComputer(ud.userData(user2), cd.computerData(computer2))
+    # reserveComputer(ud.userData(user1), cd.computerData(computer1))
+    # reserveComputer(ud.userData(user2), cd.computerData(computer2))
 
-    print(computerStationsInUse[0])
 
     ws.start_server()
 
