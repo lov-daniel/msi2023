@@ -1,4 +1,4 @@
-# Priority Queue
+# Administrative Panel
 
 Contributors
 --
@@ -9,12 +9,10 @@ Contributors
 Features
 --
 
-- Ability to scale and add computers to desired setup
-- Ability to check in students and place them at a specific spot
-- Ability to check when a specific station had started its session
+- Ability to scale and add computers to desired setup.
+- Ability to check in students and place them at a specific spot.
+- Ability to check when a specific station had started its session.
 - Ability to remove users at will to accomodate for others.
-
-
 
 Problem
 --
@@ -35,6 +33,11 @@ A web server was developed in order to remedy this issue. A combination of HTML 
 
 ![Alt text](loginpage.png)
 
+Video Demonstration
+--
+
+
+
 Language Stack
 --
 - Python [^1]
@@ -46,4 +49,4 @@ Language Stack
 Footnotes
 --
 [^1]: Flask Framework was used along with standard Python.
-[^2]: Image of Triton Esports Center provided by Google.
+[^2]: Image of Triton Esports Center provided by Google.    

@@ -33,7 +33,7 @@ function inUse(element) {
     <div class="overlay">PC: ${currentPC}</div>`;
 
     element.parentElement.parentElement.children[1].innerHTML = 
-    `<button type="button" onclick='event.stopPropagation(); isPC(this);'>Remove</button>
+    `<button type="button"  onclick='event.stopPropagation(); isPC(this);'>Remove</button>
     <button type="button" onclick='event.stopPropagation(); showModal(this); inUse(this);'>Use PC</button>
     `;
     
