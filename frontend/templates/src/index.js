@@ -1,38 +1,35 @@
 // Create tables
-function tableCreate(row, col) {
+function tableCreate() {
   const body = document.body,
         tbl = document.createElement('table');
-
   tbl.style.width = '100px';
-  tbl.style.margin = "auto";
+  tbl.style.border = '1px solid black';
 
-
-  for (let i = 0; i < row; i++) {
+  for (let i = 0; i < 15; i++) {
     const tr = tbl.insertRow();
-    for (let j = 0; j < col; j++) {
+    for (let j = 0; j < 10; j++) {
+      // if (i === 2 && j === 1) {
+      //   break;
+      // } else {
         const td = tr.insertCell();
+        td.appendChild(document.createTextNode(`Cell ${String.fromCharCode(i+65)}${j+1}`));
         var card = document.createElement("div");
         var front = document.createElement("div");
         var back = document.createElement("div");
         card.className = "card";
-        card.setAttribute("pc_id", `${String.fromCharCode(i+65)}${j+1}`);
-        card.onclick = function(){handleFlip(this)};
 
         front.id = "front";
         front.className = "cardFront";
-        // front.innerText = `PC: ${String.fromCharCode(i+65)}${j+1}`;
-        // front.innerHTML = 
-        // `  
-        // <img src="static/logo.png" alt="Computer" class="image">
-        // <div class="overlay">PC</div>
-        // `
+        front.innerText = "hi";
+        front.onclick = function(){handleFlip(this)};
         back.id = "back";
         back.className = "cardBack";
-        back.innerHTML = `<button type="button" onclick='event.stopPropagation(); isPC(this);'>Toggle</button>`
+        back.onclick = function(){handleFlip(this)};
   
         td.append(card);
         card.append(front);
         card.append(back);
+        td.style.border = '1px solid black';
         // if (i === 1 && j === 1) {
         //   td.setAttribute('rowSpan', '2');
         // }
@@ -41,4 +38,6 @@ function tableCreate(row, col) {
   }
   body.appendChild(tbl);
 }
+
+window.onload = tableCreate;
 

@@ -2,12 +2,29 @@
 <html>
 
 <head>
-    <title>Admin panel</title>
-    <link rel="stylesheet" href="../static/styles.css">
-    <link rel="icon" type="image/x-icon" href="../static/logo.png">
+    <title>Admin Panel</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../static/index.js"> </script>
+    <script src="../static/cards.js"> </script>
+    <script type="text/javascript">
+        let dimensions = [];
+
+        function load_jsons() {
+            $.getJSON("{{url_for('send_json')}}", function (data) {
+            $.each(data, function(key, val) {
+                dimensions.push(val);
+                });
+            tableCreate(dimensions[0], dimensions[1])
+            });
+        }
+    </script>
+
+<link rel="stylesheet" href="../static/styles.css">
+<link rel="icon" type="image/x-icon" href="../static/logo.png">
+    
 </head>
 
-<body>
+<body onload="load_jsons()">
     <style>
         h1 {text-align: center;}
     </style>
@@ -15,13 +32,15 @@
     <h1>Admin Panel</h1>
     <p1>
     <form action="" method="POST">
-    <label for="length">Length:</label><br>
+    <div class="container">
+        <label for="length">Length:</label><br>
     <input type="number" id="length" name="length" min="5" value="{{
         request.files.length}}"><br>
     <label for="width">Width:</label><br>
     <input type="number" id="width" name="width" min="5" value= "{{
         request.files.length}}"><br>
     <input class="btn btn-default" type="submit" value="Set Size">
+    </div>
     </form>
     </p1>
 </body>

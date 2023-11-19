@@ -4,18 +4,19 @@ import os
 import sys
 import string
 
-
-
 working_directory = os.getcwd()
 sys.path.insert(1, working_directory)
 
 dimensions = [5, 5]
-
 computers = []
 
 import computerData as cd
 
+
 app = Flask(__name__, '/static') 
+
+def receiveData(data):
+    return data
 
 row_id = list(string.ascii_uppercase)
 pc_count = 10
@@ -25,38 +26,34 @@ row_length = 5
 @app.route("/", methods=["GET", "POST"]) 
 def homepage(): 
     return render_template('UI.html')
-
-@app.route("/homepage", methods=["GET", "POST"])
-def test():
-    return render_template("homepage.html")
     
 @app.route("/sendJSONdata", methods=["GET", "POST"])
 def send_json():
     jsonFile = jsonify({"length": dimensions[0], "width": dimensions[1]})
     return jsonFile
 
-@app.route("/update_data", methods=["GET","POST"])
-def update_data():
-    return jsonify({"length": dimensions[0], "width": dimensions[1]})
+@app.route("/getJSONdata", methods=["POST"])
+def receive_json():
+    data = request.args.get("PCs", "No computers found.")
+    print(data)
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
     error = None
     if request.method == "POST":
-        if request.form.get["username"] != "admin" or request.form.get["password"] != "admin":
+        if request.form.get("username") != "admin" or request.form.get("password") != "admin":
             error = "invalid credentials"
+            return render_template('login.html', error=error)
         else:
-            return redirect(url_for("test"))
-    return render_template("login.html", post_title = "amongus")
-
+            return(redirect(url_for('admin')))
+    return render_template('login.html')
+                   
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
     if request.method == "POST":
         if request.form["length"] != 0 and request.form["width"]:
             dimensions[0] = request.form.get("length", 5)
             dimensions[1] = request.form.get("width", 5)
-        
-        print(f"Length: {dimensions[0]}\n Width: {dimensions[1]}")
     return render_template("admin.html")
 
 
