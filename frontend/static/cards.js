@@ -4,6 +4,7 @@ inUseComputers = [];
 startTime = [];
 userIDs = [];
 
+
 const d = new Date();
 
 function handleFlip(element) {
@@ -27,14 +28,22 @@ function inUse(element) {
     index = inUseComputers.indexOf(currentPC);
     inUseComputers.splice(index, 1);
 
+    element.parentElement.parentElement.children[0].innerHTML = 
+    `<img src="../static/computer.png" alt="Computer" class="image">
+    <div class="overlay">PC: ${currentPC}</div>`;
+
     element.parentElement.parentElement.children[1].innerHTML = 
     `<button type="button" onclick='event.stopPropagation(); isPC(this);'>Remove</button>
     <button type="button" onclick='event.stopPropagation(); showModal(this); inUse(this);'>Use PC</button>
     `;
+    
+
 
   } else {
     // Adds to being used
+    
 
+    startTime.push([d.getHours(), d.getMinutes(), d.getSeconds()]);
     inUseComputers.push(currentPC);
     index = inUseComputers.indexOf(currentPC);
     
@@ -43,23 +52,30 @@ function inUse(element) {
     console.log("index: " + index);
 
 
+    element.parentElement.parentElement.children[0].innerHTML = 
+    `<img src="../static/computer.png" alt="Computer" class="image">
+    <div class="overlay">${currentPC}<br>${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}</div>`
+    ;
+
     element.parentElement.parentElement.children[1].innerHTML = 
     `<button type="button" onclick='event.stopPropagation(); isPC(this);'>Remove</button>
     <button type="button" onclick='event.stopPropagation(); inUse(this);'>Done!</button>
     <div>Used by: ${userIDs[index]}</div>
-    `;  
+    `;
 
   console.log("Computers in use: " + inUseComputers);
   
   }
 }
 
-function isPC(element) {
+function isPC(element, reload=false) {
   // enabledComputers.push("");
   // console.log(element.parentElement.parentElement.children[0]);
-
-  currentPC = element.parentElement.parentElement.getAttribute("pc_id");
-  
+  if (reload == false) {
+    currentPC = element.parentElement.parentElement.getAttribute("pc_id");
+  } else {
+    currentPC = element.getAttribute("pc_id");
+  }
   // element.parentElement.parentElement.children[0].classList.toggle('isAvailable');
   // element.parentElement.parentElement.children[1].classList.toggle('isAvailable');
   handleFlip(element.parentElement.parentElement);
@@ -100,7 +116,7 @@ function isPC(element) {
 
     element.parentElement.parentElement.children[0].innerHTML = 
     `<img src="../static/computer.png" alt="Computer" class="image">
-    <div class="overlay">PC: ${currentPC}</div>`;
+    <div class="overlay">${currentPC}</div>`;
 
     element.parentElement.parentElement.children[1].innerHTML = 
     `<button type="button" onclick='event.stopPropagation(); isPC(this);'>Remove</button>

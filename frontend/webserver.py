@@ -10,13 +10,14 @@ sys.path.insert(1, working_directory)
 dimensions = [5, 5]
 computers = []
 
+duration = 0
 import computerData as cd
-
+import computerStation as cs
 
 app = Flask(__name__, '/static') 
 
-def receiveData(data):
-    return data
+
+
 
 row_id = list(string.ascii_uppercase)
 
@@ -24,12 +25,10 @@ row_id = list(string.ascii_uppercase)
 @app.route("/", methods=["GET", "POST"]) 
 def homepage(): 
     return render_template('UI.html')
-    
 @app.route("/sendJSONdata", methods=["GET", "POST"])
 def send_json():
     jsonFile = jsonify({"length": dimensions[0], "width": dimensions[1]})
     return jsonFile
-
 @app.route("/sendJSONdatatwo", methods=["GET", "POST"])
 def send_jsontwo():
     jsonFile = json.dumps({"computers" : computers})
@@ -63,10 +62,10 @@ def admin():
             dimensions[1] = request.form.get("width", 5)
     return render_template("admin.html")
 
-# @app.route("/sendJSONdataDuration", methods=["POST"])
-# def send_json():
-#     jsonFile = jsonify({"duration": computerStation.getDuration()})
-#     return jsonFile
+@app.route("/sendJSONdataDuration", methods=["POST"])
+def send_json_duration():
+    jsonFile = jsonify({"duration": cs.computerStation.getDuration()})
+    return jsonFile
 
 
 def load_pcs():

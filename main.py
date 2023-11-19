@@ -24,11 +24,10 @@ def reserveComputer(user, computer):
 def main():
 
     computerList = ws.load_pcs()
-
     userID = input("Please enter your PID : \n")
     reserveComputer(userID, ws.reservePC())
-
     ws.start_server()
+    
 
 
 

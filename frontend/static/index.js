@@ -40,9 +40,10 @@ function tableCreate(row, col, enabledCards=0) {
         card.append(back);
 
         if (enabledCards) {
-          if (enabledCards[0].includes(card.getAttribute("pc_id")) === true) {
+          if (enabledCards[0].includes(card.getAttribute("pc_id"))) {
             console.log("pc found!");
             handleFlip(card);
+            console.log("card" + card);
         }
 
         // $.ajax({
