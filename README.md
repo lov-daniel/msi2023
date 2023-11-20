@@ -36,7 +36,7 @@ A web server was developed in order to remedy this issue. A combination of HTML 
 Video Demonstration
 --
 
-[![Alt text](https://youtu.be/fm-5XF7m4o4?si=4dxG3T-xtt9CUGoN)
+https://youtu.be/fm-5XF7m4o4?si=4dxG3T-xtt9CUGoN
 
 Language Stack
 --
